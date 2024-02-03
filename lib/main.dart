@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:screen_key/service/tray_service.dart';
 import 'package:screen_key/view/key_view/bloc/key_bloc.dart';
 import 'package:screen_key/view/key_view/key_view.dart';
 import 'package:screen_key/view/setting_view/bloc/setting_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
+  await TrayService.initSystemTray();
   runApp(const MyApp());
 }
 
