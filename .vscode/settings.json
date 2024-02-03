@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/han/Documents/screen_key/linux",
+    "files.associations": {
+        "sstream": "cpp"
+    }
+}
