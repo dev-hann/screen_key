@@ -10,6 +10,7 @@ const keyMap = <int, String>{
   9: "8",
   10: "9",
   11: "0",
+  13: "=",
   14: "backSpace",
   15: "tab",
   16: "q",

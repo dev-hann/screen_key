@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:screen_key/service/tray_service.dart';
+import 'package:multi_window/multi_widget.dart';
+import 'package:multi_window/multi_window.dart';
+import 'package:screen_key/service/window_service.dart';
 import 'package:screen_key/view/key_view/bloc/key_bloc.dart';
 import 'package:screen_key/view/key_view/key_view.dart';
 import 'package:screen_key/view/setting_view/bloc/setting_bloc.dart';
-import 'package:window_manager/window_manager.dart';
+import 'package:screen_key/view/setting_view/setting_view.dart';
 
-void main() async {
+void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
-  await TrayService.initSystemTray();
+  MultiWindow.init(args);
+  await WindowService.instance.init();
   runApp(const MyApp());
 }
 
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
       title: 'ScreenKey',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+        ),
         useMaterial3: true,
       ),
       home: MultiBlocProvider(
@@ -34,7 +38,12 @@ class MyApp extends StatelessWidget {
             create: (_) => SettingBloc(),
           ),
         ],
-        child: const KeyView(),
+        child: MultiWidget(
+          const {
+            "setting": SettingView(),
+          },
+          fallback: const KeyView(),
+        ),
       ),
     );
   }

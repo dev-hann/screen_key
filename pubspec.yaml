@@ -18,7 +18,8 @@ dependencies:
 
   window_manager: ^0.3.7
   system_tray: ^2.0.3
-  desktop_multi_window: ^0.2.0
+  multi_window: ^0.2.0
+  fpdart:
 
 dev_dependencies:
   flutter_test:

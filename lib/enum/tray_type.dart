@@ -1,0 +1,4 @@
+enum TrayType {
+  preference,
+  exit,
+}

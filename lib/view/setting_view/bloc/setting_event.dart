@@ -2,9 +2,12 @@ part of 'setting_bloc.dart';
 
 abstract class SettingEvent {}
 
-class SettingInited extends SettingEvent {}
+class SettingInited extends SettingEvent {
+  SettingInited(this.setting);
+  final WindowSetting setting;
+}
 
 class SettingUpdated extends SettingEvent {
-  SettingUpdated(this.newSetting);
-  final Setting newSetting;
+  SettingUpdated(this.setting);
+  final WindowSetting setting;
 }

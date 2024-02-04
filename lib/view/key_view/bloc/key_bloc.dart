@@ -24,8 +24,10 @@ class KeyBloc extends Bloc<KeyEvent, KeyState> {
           case InputKeyStatusType.released:
             break;
           case InputKeyStatusType.pressed:
-          case InputKeyStatusType.held:
             add(KeyUpdated(keyEvent.key));
+            break;
+          case InputKeyStatusType.held:
+            break;
         }
       },
     );
